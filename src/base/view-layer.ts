@@ -13,7 +13,16 @@ import {
   findIndex,
   isString,
 } from '@antv/util';
-import { View, BBox, Geometry, VIEW_LIFE_CIRCLE, registerComponentController, Gestrue } from '../dependents';
+import {
+  View,
+  BBox,
+  Geometry,
+  VIEW_LIFE_CIRCLE,
+  registerComponentController,
+  Gestrue,
+  parse,
+  TransformSchema,
+} from '../dependents';
 import TextDescription from '../components/description';
 import BaseLabel, { LabelComponentConfig, getLabelComponent } from '../components/label/base';
 import { getComponent } from '../components/factory';
@@ -46,6 +55,7 @@ import { LooseMap } from '../interface/types';
 export interface ViewConfig {
   renderer?: string;
   data?: DataItem[];
+  dataTransformSchema?: TransformSchema;
   meta?: LooseMap<Meta>;
   padding?: number | number[] | string;
   xField?: string;
@@ -384,6 +394,10 @@ export default abstract class ViewLayer<T extends ViewLayerConfig = ViewLayerCon
   }
 
   protected processData(data?: DataItem[]): DataItem[] | undefined {
+    const { dataTransformSchema } = this.options;
+    if (dataTransformSchema) {
+      return parse(data, dataTransformSchema);
+    }
     return data;
   }
 

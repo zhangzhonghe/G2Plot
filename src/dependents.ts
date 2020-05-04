@@ -47,6 +47,10 @@ export { GroupComponentCfg, TooltipCfg } from '@antv/component/lib/types';
 // Coordinate
 export { Coordinate } from '@antv/coord';
 
+// DataTransform schema
+
+export { parse, TransformSchema } from '@antv/dw-transform';
+
 // Common
 export const ORIGIN = 'origin';
 export const _ORIGIN = '_origin';
