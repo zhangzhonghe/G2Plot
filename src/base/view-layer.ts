@@ -328,9 +328,12 @@ export default abstract class ViewLayer<T extends ViewLayerConfig = ViewLayerCon
     this.processOptions(this.options);
   }
 
-  public changeData(data: DataItem[]): void {
-    this.options.data = this.processData(data);
-    this.view.changeData(this.options.data);
+  public changeData(data: DataItem[], transformSchema?: TransformSchema): void {
+    if (transformSchema) {
+      this.options.dataTransformSchema = transformSchema;
+    }
+    this.options.data = data;
+    this.view.changeData(this.processData(data));
   }
 
   // plot 不断销毁重建，需要一个api获取最新的plot
