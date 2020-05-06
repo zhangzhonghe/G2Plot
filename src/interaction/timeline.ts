@@ -109,13 +109,15 @@ export default class TimeLineInteraction extends BaseInteraction {
 
   private getFilterData(tick: string) {
     const { field } = this.config;
-    const { data } = this.getViewLayer().options;
+    const layer = this.getViewLayer();
+    const data = layer.processData(layer.options.data);
     return data.filter((item) => item[field] === tick);
   }
 
   private getTicks() {
     const { field } = this.config;
-    const { data } = this.getViewLayer().options;
+    const layer = this.getViewLayer();
+    const data = layer.processData(layer.options.data);
     return uniq(data.map((item) => item[field]));
   }
 

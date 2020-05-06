@@ -396,7 +396,7 @@ export default abstract class ViewLayer<T extends ViewLayerConfig = ViewLayerCon
     return this.processData((this.options.data || []).slice(start, end));
   }
 
-  protected processData(data?: DataItem[]): DataItem[] | undefined {
+  public processData(data?: DataItem[]): DataItem[] | undefined {
     const { dataTransformSchema } = this.options;
     if (dataTransformSchema) {
       return parse(data, dataTransformSchema);

@@ -103,7 +103,7 @@ export default class GuidePointParser extends ElementParser {
   private _parseColorByField(props, config, field) {
     config.fields = [field];
     if (props.point.color) {
-      const count = getValuesByField(field, props.data).length;
+      const count = getValuesByField(field, this.plot.processData(props.data)).length;
       const values = [];
       for (let i = 0; i < count; i++) {
         values.push(props.point.color);

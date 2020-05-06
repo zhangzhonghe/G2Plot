@@ -7,7 +7,7 @@ function onActive(plot, condition) {
   const props = plot.options;
   // 获取state condition对应在画布的位置，只有在state condition对应字段为位置映射字段时，tooltip才会对齐进行响应
   if (shouldActive(props, condition)) {
-    const data = props.data;
+    const data = plot.processData(props.data);
     each(data, (d) => {
       if (compare(d, condition)) {
         const point = plot.view.getXY(d);

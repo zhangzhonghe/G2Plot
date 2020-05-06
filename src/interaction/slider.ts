@@ -95,7 +95,7 @@ export default class SliderInteraction extends BaseInteraction {
     this.xScaleCfg = undefined;
     // 等待 view 每次 render 完成后更新 slider 组件
     const callback = () => {
-      if (isEmpty(layer.options.data)) {
+      if (isEmpty(layer.processData(layer.options.data))) {
         return;
       }
       if (!this.xScaleCfg) {
@@ -180,9 +180,10 @@ export default class SliderInteraction extends BaseInteraction {
   }
 
   private getSliderTrendData(): number[] {
-    const { data, yField } = this.getViewLayer().options;
-
-    return map(data, (item) => item[yField]);
+    const layer = this.getViewLayer();
+    const { data, yField } = layer.options;
+    const layerData: any = layer.processData(data);
+    return map(layerData, (item) => item[yField]);
   }
 
   private getSliderData(start: number, end: number): any[] {
@@ -195,11 +196,13 @@ export default class SliderInteraction extends BaseInteraction {
   }
 
   private getSliderMinMaxText(start: number, end: number): { minText: string; maxText: string } {
-    const { data = [], xField } = this.getViewLayer().options;
-    const length = size(data);
+    const layer = this.getViewLayer();
+    const { data = [], xField } = layer.options;
+    const layerData = layer.processData(data);
+    const length = size(layerData);
     const startIdx = Math.round(start * length);
     const endIdx = Math.max(startIdx + 1, Math.round(end * length));
-    const newData = data.slice(startIdx, endIdx);
+    const newData = layerData.slice(startIdx, endIdx);
 
     return {
       minText: newData.length > 0 ? head(newData)[xField] : '',
