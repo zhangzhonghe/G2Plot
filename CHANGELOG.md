@@ -1,3 +1,13 @@
+## <small>1.1.1 (2020-05-06)
+- 🐞fix: chart name typo ([7b2a0b](https://github.com/antvis/G2Plot/commit/7b2a0b0))
+- 🐞fix: dual line render error without legend config ([4675421](https://github.com/antvis/G2Plot/commit/4675421))
+
+## <small>1.1.0 (2020-05-06)
+- 🌟双轴图升级为正式版 ([8568318](https://github.com/antvis/G2Plot/commit/8568318))
+- 🐞fix: padding calculation ([db7d6b3](https://github.com/antvis/G2Plot/commit/db7d6b3))
+- 🐞fix: donut spider label ([3eb3955](https://github.com/antvis/G2Plot/commit/3eb3955))
+- 🐞fix: 漏斗图legend隐藏，组件绘制错误 ([7e8c75a](https://github.com/antvis/G2Plot/commit/7e8c75a))
+
 ## <small>1.0.4 (2020-04-22)
 - 🌟 auto label for Column and Bar chart([be2eaa1](https://github.com/antvis/G2Plot/commit/be2eaa1))
 - 🌟 auto label for Area chart([597b667](https://github.com/antvis/G2Plot/commit/597b667))

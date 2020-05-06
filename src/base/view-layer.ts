@@ -19,7 +19,7 @@ import {
   Geometry,
   VIEW_LIFE_CIRCLE,
   registerComponentController,
-  Gestrue,
+  Gesture,
   parse,
   TransformSchema,
 } from '../dependents';
@@ -88,7 +88,7 @@ export interface ViewConfig {
 
 export interface ViewLayerConfig extends ViewConfig, LayerConfig {}
 
-registerComponentController('gesture', Gestrue);
+registerComponentController('gesture', Gesture);
 
 export default abstract class ViewLayer<T extends ViewLayerConfig = ViewLayerConfig> extends Layer<T> {
   public static getDefaultOptions(): Partial<ViewConfig> {
@@ -298,7 +298,7 @@ export default abstract class ViewLayer<T extends ViewLayerConfig = ViewLayerCon
     if (padding === 'auto') {
       this.paddingController.processAutoPadding();
     }
-    if (options.tooltip && options.tooltip.customContent && options.padding !== 'auto') {
+    if (options.tooltip?.customContent?.callback && options.padding !== 'auto') {
       this.customTooltip();
     }
   }
@@ -307,7 +307,7 @@ export default abstract class ViewLayer<T extends ViewLayerConfig = ViewLayerCon
   public render(): void {
     super.render();
     const { data } = this.options;
-    if (!isEmpty(data)) {
+    if (!isEmpty(this.processData(data))) {
       this.view.render();
     }
   }
@@ -456,7 +456,7 @@ export default abstract class ViewLayer<T extends ViewLayerConfig = ViewLayerCon
     }
     this.view.on('tooltip:show', () => {
       if (!customContentCfg.container) {
-        container = document.getElementsByClassName('g2-tooltip')[0];
+        container = this.canvas.cfg.container.getElementsByClassName('g2-tooltip')[0];
       }
     });
     this.view.hideTooltip();
