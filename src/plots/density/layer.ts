@@ -56,7 +56,7 @@ export default class DensityLayer<T extends DensityLayerConfig = DensityLayerCon
     super.init();
   }
 
-  protected processData(originData?: DataItem[]) {
+  public processData(originData?: DataItem[]) {
     const { binField, binWidth, binNumber, kernel } = this.options;
     const _kernel = kernel ? kernel : 'epanechnikov';
     const kernelFunc = kernels[_kernel];

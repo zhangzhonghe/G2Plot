@@ -26,7 +26,7 @@ export default class PercentStackedAreaLayer extends StackedArea<PercentStackedA
   }
   public type: string = 'percentStackedArea';
 
-  protected processData(originData?: DataItem[]) {
+  public processData(originData?: DataItem[]) {
     const { xField, yField } = this.options;
 
     return transformDataPercentage(originData, xField, [yField]);

@@ -115,7 +115,7 @@ export default class BaseColumnLayer<T extends ColumnLayerConfig = ColumnLayerCo
     return PLOT_GEOM_MAP[type];
   }
 
-  protected processData(originData?: DataItem[]) {
+  public processData(originData?: DataItem[]) {
     const { xField } = this.options;
     const processedData = [];
     each(originData, (data) => {

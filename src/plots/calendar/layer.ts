@@ -95,7 +95,7 @@ export default class CalendarLayer extends ViewLayer<CalendarLayerConfig> {
    *
    * @param data
    */
-  protected processData(data?: DataItem[]): DataItem[] | undefined {
+  public processData(data?: DataItem[]): DataItem[] | undefined {
     const { dateField } = this.options;
     let { dateRange } = this.options;
 

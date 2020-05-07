@@ -135,7 +135,7 @@ export default class BaseBarLayer<T extends BarLayerConfig = BarLayerConfig> ext
     return PLOT_GEOM_MAP[type];
   }
 
-  protected processData(originData?: DataItem[]) {
+  public processData(originData?: DataItem[]) {
     const inputData = originData ? originData.slice().reverse() : originData;
     const { yField } = this.options;
     const processedData = [];

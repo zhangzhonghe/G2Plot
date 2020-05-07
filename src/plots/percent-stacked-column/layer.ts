@@ -35,7 +35,7 @@ export default class PercentStackedColumnLayer extends StackedColumn<PercentStac
   }
   public type: string = 'percentStackedColumn';
 
-  protected processData(originData?: DataItem[]) {
+  public processData(originData?: DataItem[]) {
     const { xField, yField } = this.options;
     return transformDataPercentage(originData || [], xField, [yField]);
   }

@@ -117,7 +117,7 @@ export default class PieLayer<T extends PieLayerConfig = PieLayerConfig> extends
     this.setConfig('scales', scales);
   }
 
-  protected processData(data?: DataItem[]): DataItem[] | undefined {
+  public processData(data?: DataItem[]): DataItem[] | undefined {
     const key = this.options.angleField;
     return data.map((item) => ({
       ...item,

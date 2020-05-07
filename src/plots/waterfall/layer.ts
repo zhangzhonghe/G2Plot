@@ -178,7 +178,7 @@ export default class WaterfallLayer extends ViewLayer<WaterfallLayerConfig> {
     this.setConfig('geometry', waterfall);
   }
 
-  protected processData(originData?: DataItem[]) {
+  public processData(originData?: DataItem[]) {
     const plotData = [];
     const xField = this.options.xField;
     const yField = this.options.yField;

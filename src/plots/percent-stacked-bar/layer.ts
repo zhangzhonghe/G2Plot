@@ -35,7 +35,7 @@ export default class PercentStackedBarLayer extends StackedBar<PercentStackedBar
   }
   public type: string = 'percentStackedBar';
 
-  protected processData(originData?: DataItem[]) {
+  public processData(originData?: DataItem[]) {
     const { xField, yField } = this.options;
     const processData = super.processData(originData);
 

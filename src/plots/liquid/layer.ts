@@ -236,7 +236,7 @@ export default class LiquidLayer<T extends LiquidLayerConfig = LiquidLayerConfig
     }
   }
 
-  protected processData(): DataItem[] | undefined {
+  public processData(): DataItem[] | undefined {
     const props = this.options;
     return [{ _: '_', value: props.value }];
   }

@@ -120,7 +120,7 @@ export default class TreemapLayer<T extends TreemapLayerConfig = TreemapLayerCon
     return treemapData;
   }
 
-  protected processData() {
+  public processData() {
     return this.rootData;
   }
 

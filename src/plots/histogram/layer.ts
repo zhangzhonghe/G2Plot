@@ -23,7 +23,7 @@ export default class HistogramLayer extends Column<HistogramLayerConfig> {
     super.init();
   }
 
-  protected processData(originData?: DataItem[]) {
+  public processData(originData?: DataItem[]) {
     const { binField, binWidth, binNumber } = this.options;
     const originData_copy = clone(originData);
     // 根据binField value对源数据进行排序

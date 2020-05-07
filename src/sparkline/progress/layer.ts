@@ -218,7 +218,7 @@ export default class ProgressLayer<T extends ProgressLayerConfig = ProgressLayer
     return props.color;
   }
 
-  protected processData() {
+  public processData() {
     const props = this.options;
     const data = [
       { type: 'current', value: props.percent },

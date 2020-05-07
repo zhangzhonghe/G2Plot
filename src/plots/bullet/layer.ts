@@ -299,7 +299,7 @@ export default abstract class BulletLayer extends ViewLayer<BulletViewConfig> {
     options.yAxis.max = Math.max.apply([], values);
   }
 
-  protected processData(dataOptions: BulletViewConfig['data']) {
+  public processData(dataOptions: BulletViewConfig['data']) {
     const options = this.options;
     const data = [];
     dataOptions.forEach((dataItem, dataIdx) => {
