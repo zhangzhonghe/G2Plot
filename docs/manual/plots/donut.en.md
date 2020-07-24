@@ -49,7 +49,7 @@ order: 15
 # 快速上手
 
 ```js
-import { Ring } from '@antv/g2plot';
+import { Donut } from '@antv/g2plot';
 
 const data = [
   {
@@ -78,7 +78,7 @@ const data = [
   },
 ];
 
-const ringPlot = new Ring(document.getElementById('container'), {
+const donutPlot = new Donut(document.getElementById('container'), {
   forceFit: true,
   radius: 0.8,
   data,
@@ -86,7 +86,7 @@ const ringPlot = new Ring(document.getElementById('container'), {
   colorField: 'type',
 });
 
-ringPlot.render();
+donutPlot.render();
 
 ```
 
@@ -244,10 +244,10 @@ color:(d)=>{
 }
 ```
 
-### ringStyle ✨
+### pieStyle ✨
 **可选**, *object*
 
-功能描述： 设置扇形样式。ringStyle中的`fill`会覆盖 `color` 的配置。ringStyle可以直接指定，也可以通过callback的方式，根据数据为每个扇形切片指定单独的样式。
+功能描述： 设置扇形样式。pieStyle中的`fill`会覆盖 `color` 的配置。pieStyle可以直接指定，也可以通过callback的方式，根据数据为每个扇形切片指定单独的样式。
 
 默认配置： 无
 
@@ -321,7 +321,7 @@ color:(d)=>{
 | --- | --- | --- | --- |
 | visible | boolean | 是否显示 | true |
 | offset | number | 距离鼠标位置偏移值 | 20 |
-| domStyles | object | 配置tooltip样式<br />- g2-tooltop: object 设置tooltip容器的CSS样式<br />- g2-tooltip-title: object 设置tooltip标题的CSS样式<br />- g2-tooltip-list: object 设置tooltip列表容器的CSS 样式<br />- g2-tooltip-marker: object 设置tooltip列表容器中每一项 marker的CSS样式<br />- g2-tooltip-value: object 设置tooltip 列表容器中每一项 value的CSS样式<br /> | - |
+| domStyles | object | 配置tooltip样式<br />- g2-tooltip: object 设置tooltip容器的CSS样式<br />- g2-tooltip-title: object 设置tooltip标题的CSS样式<br />- g2-tooltip-list: object 设置tooltip列表容器的CSS 样式<br />- g2-tooltip-marker: object 设置tooltip列表容器中每一项 marker的CSS样式<br />- g2-tooltip-value: object 设置tooltip 列表容器中每一项 value的CSS样式<br /> | - |
 | fields | string | 设置tooltip内容字段，默认为[ `angleField`,`colorField`] |
 | formatter | object | 对tooltip items进行格式化，入参为tooltip fields对应数值，出参为格式为{name:'a',value:1} |
 

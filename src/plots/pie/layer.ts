@@ -1,4 +1,4 @@
-import { deepMix } from '@antv/util';
+import { deepMix, isNil, map, some, every } from '@antv/util';
 import * as EventParser from './event';
 import ViewLayer, { ViewConfig } from '../../base/view-layer';
 import { DataItem, Label, GraphicStyle } from '../../interface/config';
@@ -8,6 +8,7 @@ import { getPieLabel, PieLabelConfig } from './component/label';
 import SpiderLabel from './component/label/spider-label';
 import { registerPlotType } from '../../base/global';
 import PieBaseLabel from './component/label/base-label';
+import { processEmpty, getOriginKey } from './utils';
 import './theme';
 
 export interface PieViewConfig extends ViewConfig {
@@ -126,10 +127,34 @@ export default class PieLayer<T extends PieLayerConfig = PieLayerConfig> extends
 
   protected processData(data?: DataItem[]): DataItem[] | undefined {
     const key = this.options.angleField;
-    return data.map((item) => ({
-      ...item,
-      [key]: typeof item[key] === 'string' ? Number.parseFloat(item[key] as 'string') : item[key],
-    }));
+    const originalKey = getOriginKey(key);
+    const originalData = data.map((item) => {
+      const originalValue = typeof item[key] === 'string' ? Number.parseFloat(item[key] as 'string') : item[key];
+      return {
+        ...item,
+        [key]: originalValue,
+        [originalKey]: originalValue,
+      };
+    });
+
+    const getValue = (d: DataItem) => d[key];
+    const notEqualZeroOrNil = (v: number) => v !== 0 && !isNil(v);
+    const allAngleValue = map(originalData, getValue);
+    const allNil = every(allAngleValue, isNil);
+    /** 数据全空处理，同时处理 meta */
+    if (!some(allAngleValue, notEqualZeroOrNil)) {
+      const meta = this.options.meta || {};
+      // 数据全为 null
+      if (allNil) {
+        this.options.meta = deepMix({}, meta, { [key]: { formatter: () => 'null' } });
+        return processEmpty(originalData, key);
+      } else {
+        // 数据不全为 null，部分 0 部分 null（null值不展示）
+        this.options.meta = deepMix({}, meta, { [key]: { formatter: () => '0' } });
+        return processEmpty(originalData, key, (v) => (v === 0 ? 1 : v));
+      }
+    }
+    return originalData;
   }
 
   protected axis() {

@@ -373,7 +373,7 @@ title: {
 | --- | --- | --- |
 | visible | boolean | 是否可见 |
 | line | object | 坐标轴轴线<br />- visible: boolean 是否可见<br />- style：object 轴线样式<br /> |
-| grid | object | 网格线<br />- visible: boolean 是否可见<br />- style：object 网格线样式<br /> |
+| grid | object | 网格线<br />- visible: boolean 是否可见<br />- line：object 网格线样式<br /> |
 | label | object | 坐标轴标签<br />- visible: boolean 是否可见<br />- formatter: function 坐标轴标签格式化<br />- suffix: string 后缀<br />- offsetX: number 位置在x方向上的偏移量<br />- offsetY：number 位置在y方向上的偏移量<br />- style：object 样<br />  -autoHide: boolean 是否自动隐藏<br/>-autoRotate: boolean 是否自动旋转|
 | tickLine | object | 坐标轴刻度<br />- visible：boolean 是否可见<br />- style: object 样式<br /> |
 | title | object | 坐标轴标题<br />- visible： boolean 是否可见<br />- text: string 标题文字<br />- offset: number 位置偏移量<br />- style：object 样式<br /> |
@@ -416,7 +416,7 @@ title: {
 | min | number | 设置坐标轴最小值 |
 | max | number | 设置坐标轴最大值 |
 | line | object | 坐标轴轴线<br />- visible: boolean 是否可见<br />- style：object 轴线样式<br /> |
-| grid | object | 网格线<br />- visible: boolean 是否可见<br />- style：object 网格线样式<br /> |
+| grid | object | 网格线<br />- visible: boolean 是否可见<br />- line：object 网格线样式<br /> |
 | label | object | 坐标轴标签<br />- visible: boolean 是否可见<br />- formatter: function 坐标轴标签格式化 DEMO<br />- suffix: string 后缀<br />- precision：number  标签精度，如配置为 2，则格式化为 2 位小数<br />- offsetX: number 位置在x方向上的偏移量<br />- offsetY：number 位置在y方向上的偏移量<br />- style：object 样<br /> -autoHide: boolean 是否自动隐藏<br/>-autoRotate: boolean 是否自动旋转 |
 | tickLine | object | 坐标轴刻度<br />- visible：boolean 是否可见<br />- style: object 样式<br /> |
 | title | object | 坐标轴标题<br />- visible： boolean 是否可见<br />- text: string 标题文字<br />- offset: number 位置偏移量<br />- style：object 样式<br /> |
@@ -461,7 +461,7 @@ offset: 20,
 | --- | --- | --- |
 | visible | boolean | 是否显示 |
 | offset | number | 距离鼠标位置偏移值 |
-| domStyles | object | 配置tooltip样式<br />- g2-tooltop: object 设置tooltip容器的CSS样式<br />- g2-tooltip-title: object 设置tooltip标题的CSS样式<br />- g2-tooltip-list: object 设置tooltip列表容器的CSS 样式<br />- g2-tooltip-marker: object 设置tooltip列表容器中每一项 marker的CSS样式<br />- g2-tooltip-value: object 设置tooltip 列表容器中每一项 value的CSS样式<br /> |
+| domStyles | object | 配置tooltip样式<br />- g2-tooltip: object 设置tooltip容器的CSS样式<br />- g2-tooltip-title: object 设置tooltip标题的CSS样式<br />- g2-tooltip-list: object 设置tooltip列表容器的CSS 样式<br />- g2-tooltip-marker: object 设置tooltip列表容器中每一项 marker的CSS样式<br />- g2-tooltip-value: object 设置tooltip 列表容器中每一项 value的CSS样式<br /> |
 | fields | string | 设置tooltip内容字段，默认为[ `xField`, `yField`,`groupField`] |
 | formatter | object | 对tooltip items进行格式化，入参为tooltip fields对应数值，出参为格式为{name:'a',value:1} |
 
