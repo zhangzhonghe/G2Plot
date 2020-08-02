@@ -44,3 +44,6 @@ export { Bar, BarOptions } from './plots/bar';
 
 // 雷达图及类型定义
 export { Radar, RadarOptions } from './plots/radar';
+
+// 箱线图及类型定义
+export { Box, BoxOptions } from './plots/box';
